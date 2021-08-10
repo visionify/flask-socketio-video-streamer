@@ -29,3 +29,7 @@ cd client
 pip3 install -r requirements.txt
 python3 open_cv_client.py
 ```
+
+## Known Issues
+- This does not work with Python3.9 because of some Flask-SocketIo compatibility issues. Recommend using Python3.7
+- 
