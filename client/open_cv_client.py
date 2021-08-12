@@ -6,7 +6,7 @@ import cv2
 import base64
 
 stream_server = os.environ.get('LIVE_STREAM_SERVER') or '0.0.0.0'
-stream_port = os.environ.get('LIVE_STREAM_PORT') or 5000
+stream_port = os.environ.get('LIVE_STREAM_PORT') or 6001
 
 sio = socketio.Client()
 
@@ -111,7 +111,7 @@ if __name__ == "__main__":
             '--server-addr',  type=str, default='localhost',
             help='The IP address or hostname of the SocketIO server.')
     parser.add_argument(
-            '--server-port',  type=int, default=5000,
+            '--server-port',  type=int, default=6001,
             help='The Port number for where this is hosted.')
     parser.add_argument(
             '--stream-fps',  type=float, default=20.0,
