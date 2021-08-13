@@ -1,7 +1,8 @@
 import eventlet
 eventlet.monkey_patch()
 
-from flask_socketio import SocketIO
+from flask_socketio import SocketIO, emit, join_room, leave_room, \
+    close_room, rooms, disconnect
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
@@ -34,6 +35,28 @@ def disconnect_cv():
 @socketio.on('cv2server')
 def handle_cv_message(message):
     socketio.emit('server2web', message, namespace='/web')
+
+
+@socketio.event
+def join(message):
+    join_room(message['room'])
+    emit('server2web',
+         {'data': 'In rooms: ' + ', '.join(rooms())})
+    
+
+
+@socketio.event
+def leave(message):
+    leave_room(message['room'])
+    emit('server2web',
+         {'data': 'In rooms: ' + ', '.join(rooms())})
+
+@socketio.event
+def my_room_event(message):
+    emit('server2web',
+         {'data': message['data'],},
+         to=message['room'])
+
 
 def start_server(host='0.0.0.0', port=6001):
     print('Starting server http://{}:{}'.format(host, port))

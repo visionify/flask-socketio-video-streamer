@@ -142,6 +142,7 @@
           <h5 class="card-title">Output</h5>
           <div class="card-scroller">
             <p id="streamer-text"></p>
+            <p id="device-name"></p>
           </div>
         </div>
       </div>
@@ -160,8 +161,10 @@
   document.addEventListener("DOMContentLoaded", function(event) {
     const image_elem = document.getElementById("streamer-image");
     const text_elem = document.getElementById("streamer-text");
+    const device_name = document.getElementById('device-name');
+    var room_details = ''
 
-    var socket = io.connect('http://' + document.domain + ':' + location.port + '/web', {
+    var socket = io.connect('http://' + document.domain + ':' + location.port + '/', {
       reconnection: false
     });
 
@@ -177,6 +180,13 @@
       console.log('Connect error! ' + error);
     });
 
+    socket.on('room_details', (msg) =>{
+        console.log(msg['data'][1])
+        room_details = msg['data'][1]
+    })
+
+    socket.emit('join', {room: "rahul_mac"});
+
     socket.on('connect_timeout', (error) => {
       console.log('Connect timeout! ' + error);
     });
@@ -186,9 +196,11 @@
     });
 
     // Update image and text data based on incoming data messages
-    socket.on('server2web', (msg) => {
-      image_elem.src = msg.image;
-      text_elem.innerHTML = msg.text;
+    socket.on('rahul_mac', (msg) => {
+      console.log(msg)
+      device_name.innerHTML = msg.data.device_id
+      image_elem.src = msg.data.image;
+      text_elem.innerHTML = msg.data.text;
     });
   });
 </script>
