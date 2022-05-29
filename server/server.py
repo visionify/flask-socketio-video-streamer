@@ -42,7 +42,7 @@ def join(message):
     join_room(message['room'])
     emit('server2web',
          {'data': 'In rooms: ' + ', '.join(rooms())})
-    
+
 
 
 @socketio.event
@@ -58,7 +58,7 @@ def my_room_event(message):
          to=message['room'])
 
 
-def start_server(host='0.0.0.0', port=6001):
+def start_server(host='0.0.0.0', port=80):
     print('Starting server http://{}:{}'.format(host, port))
     socketio.run(app=app, host=host, port=port)
 

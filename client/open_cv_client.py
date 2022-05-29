@@ -5,8 +5,8 @@ import socketio
 import cv2
 import base64
 
-stream_server = os.environ.get('LIVE_STREAM_SERVER') or '0.0.0.0'
-stream_port = os.environ.get('LIVE_STREAM_PORT') or 6001
+stream_server = os.environ.get('LIVE_STREAM_SERVER') or '20.124.101.32'
+stream_port = os.environ.get('LIVE_STREAM_PORT') or 80
 
 sio = socketio.Client()
 
