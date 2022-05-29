@@ -123,9 +123,9 @@ def main(ip_addr, port, username, password, stream_name, server_ip, server_port,
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Visionify RTSP Video Streamer')
     parser.add_argument('--ip-addr', type=str, default='172.19.239.199', help='RTSP Source camera IP')
-    parser.add_argument('--port', type=str, default=554, default='RTSP Source camera port')
-    parser.add_argument('--username', type=str, default='admin', default='Username')
-    parser.add_argument('--password', type=str, default='admin1', default='Username')
+    parser.add_argument('--port', type=str, default=554, help='RTSP Source camera port')
+    parser.add_argument('--username', type=str, default='admin', help='Username')
+    parser.add_argument('--password', type=str, default='admin1', help='Username')
     parser.add_argument('--stream-name', type=str, default='h264Preview_01_main')
     parser.add_argument('--server-ip', type=str, default='20.124.101.32', help='Streaming server IP.')
     parser.add_argument('--server-port', type=int, default=80, help='Streaming server port')
