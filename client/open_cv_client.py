@@ -108,10 +108,10 @@ if __name__ == "__main__":
             '--camera', type=int, default='0',
             help='The camera index to stream from.')
     parser.add_argument(
-            '--server-addr',  type=str, default='localhost',
+            '--server-addr',  type=str, default=stream_server,
             help='The IP address or hostname of the SocketIO server.')
     parser.add_argument(
-            '--server-port',  type=int, default=6001,
+            '--server-port',  type=int, default=stream_port,
             help='The Port number for where this is hosted.')
     parser.add_argument(
             '--stream-fps',  type=float, default=20.0,

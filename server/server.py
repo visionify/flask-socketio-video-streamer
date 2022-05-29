@@ -63,4 +63,5 @@ def start_server(host='0.0.0.0', port=80):
     socketio.run(app=app, host=host, port=port)
 
 if __name__ == "__main__":
-    start_server()
+    start_server()connect
+    
